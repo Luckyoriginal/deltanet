@@ -117,5 +117,5 @@ class DeltaBlock(nn.Module):
         """
         if S==None:
             S = torch.zeros(self.d*self.expand,self.d*self.expand)
-        y,S = delta_rule_recurrent_step(self.Wq(X),self.Wk(X),self.Wv(X),self.alpha*self.sigma(self.beta(X)),S)
+        y,S = delta_rule_recurrent_step(self.Wq(X),self.Wk(X),self.Wv(X)/self.alpha,self.alpha*self.sigma(self.beta(X)),S)
         return self.proj_out(y), S
